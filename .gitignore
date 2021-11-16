@@ -1,1 +1,9 @@
-/front-end/node_modules
+#Ignore node modules
+/front-end/node_modules/*
+
+#Ignore venv stuff
+/back-end/bin
+/back-end/lib
+/back-end/scripts
+/back-end/include
+/back-end/pyvenv.cfg
