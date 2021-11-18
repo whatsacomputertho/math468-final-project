@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/extended-golay-code-simulator-style.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
+    <title>Interact With Golay Codes</title>
+</head>
+<body>
+    <nav id="navbar" class="navbar">
+        <ul id="navbar__list" class="navbar__list">
+            <li id="list__index-item" class="list__item">
+                <a id="item__to-index" class="item__logo-wrapper" href="/">
+                    <img id="to-index__logo" class="logo-wrapper__logo" src="http://blogs.ams.org/visualinsight/files/2015/12/golay_westendorp.gif" height="64px">
+                </a>
+            </li>
+            <li id="list__extended-golay-simulator-item" class="list__item">
+                <a id="item__to-extended-golay-simulator" class="item__link" href="/extended-golay-code-simulator">Extended Golay Code Simulator</a>
+            </li>
+            <li id="list__nasa-voyager-1-simulator-item" class="list__item">
+                <a id="item__to-nasa-voyager-1-simulator" class="item__link" href="/nasa-voyager-1-simulator">NASA Voyager 1 Simulator</a>
+            </li>
+            <li id="list__golay-code-paper-item" class="list__item">
+                <a id="item__to-golay-code-paper" class="item__link">Read Our Report</a>
+            </li>
+            <li id="list__about-item" class="list__item">
+                <a id="item__to-about" class="item__link" href="/about">About</a>
+            </li>
+        </ul>
+    </nav>
+    <main id="main" class="main">
+        <h1 id="main__header" class="main__header">Extended Golay Code Simulator</h1>
+        <div id="main__display" class="main__display">
+            <div id="display__input-display">
+                <p class="input-prompt__text">Specify the binary Golay code's 12 information bits.</p>
+                <label id="input-display__value-1" class="input-display__value">0</label>
+                <label id="input-display__value-1" class="input-display__value">0</label>
+                <label id="input-display__value-3" class="input-display__value">0</label>
+                <label id="input-display__value-4" class="input-display__value">0</label>
+                <label id="input-display__value-5" class="input-display__value">0</label>
+                <label id="input-display__value-6" class="input-display__value">0</label>
+                <label id="input-display__value-7" class="input-display__value">0</label>
+                <label id="input-display__value-8" class="input-display__value">0</label>
+                <label id="input-display__value-9" class="input-display__value">0</label>
+                <label id="input-display__value-10" class="input-display__value">0</label>
+                <label id="input-display__value-11" class="input-display__value">0</label>
+                <label id="input-display__value-12" class="input-display__value">0</label>
+            </div>
+            <div id="display__input" class="display__input">
+                <label id="input__input-bit-toggle-1" class="input__input-bit-toggle">
+                    <input id="input-bit-toggle__toggle-1" class="input-bit-toggle__value" type="checkbox">
+                    <span id="input-bit-toggle__slider-1" class="input-bit-toggle__slider"></span>
+                </label>
+                <label id="input__input-bit-toggle-2" class="input__input-bit-toggle">
+                    <input id="input-bit-toggle__toggle-2" class="input-bit-toggle__value" type="checkbox">
+                    <span id="input-bit-toggle__slider-2" class="input-bit-toggle__slider"></span>
+                </label>
+                <label id="input__input-bit-toggle-3" class="input__input-bit-toggle">
+                    <input id="input-bit-toggle__toggle-3" class="input-bit-toggle__value" type="checkbox">
+                    <span id="input-bit-toggle__slider-3" class="input-bit-toggle__slider"></span>
+                </label>
+                <label id="input__input-bit-toggle-4" class="input__input-bit-toggle">
+                    <input id="input-bit-toggle__toggle-4" class="input-bit-toggle__value" type="checkbox">
+                    <span id="input-bit-toggle__slider-4" class="input-bit-toggle__slider"></span>
+                </label>
+                <label id="input__input-bit-toggle-5" class="input__input-bit-toggle">
+                    <input id="input-bit-toggle__toggle-5" class="input-bit-toggle__value" type="checkbox">
+                    <span id="input-bit-toggle__slider-5" class="input-bit-toggle__slider"></span>
+                </label>
+                <label id="input__input-bit-toggle-6" class="input__input-bit-toggle">
+                    <input id="input-bit-toggle__toggle-6" class="input-bit-toggle__value" type="checkbox">
+                    <span id="input-bit-toggle__slider-6" class="input-bit-toggle__slider"></span>
+                </label>
+                <label id="input__input-bit-toggle-7" class="input__input-bit-toggle">
+                    <input id="input-bit-toggle__toggle-7" class="input-bit-toggle__value" type="checkbox">
+                    <span id="input-bit-toggle__slider-7" class="input-bit-toggle__slider"></span>
+                </label>
+                <label id="input__input-bit-toggle-8" class="input__input-bit-toggle">
+                    <input id="input-bit-toggle__toggle-8" class="input-bit-toggle__value" type="checkbox">
+                    <span id="input-bit-toggle__slider-8" class="input-bit-toggle__slider"></span>
+                </label>
+                <label id="input__input-bit-toggle-9" class="input__input-bit-toggle">
+                    <input id="input-bit-toggle__toggle-9" class="input-bit-toggle__value" type="checkbox">
+                    <span id="input-bit-toggle__slider-9" class="input-bit-toggle__slider"></span>
+                </label>
+                <label id="input__input-bit-toggle-10" class="input__input-bit-toggle">
+                    <input id="input-bit-toggle__toggle-10" class="input-bit-toggle__value" type="checkbox">
+                    <span id="input-bit-toggle__slider-10" class="input-bit-toggle__slider"></span>
+                </label>
+                <label id="input__input-bit-toggle-11" class="input__input-bit-toggle">
+                    <input id="input-bit-toggle__toggle-11" class="input-bit-toggle__value" type="checkbox">
+                    <span id="input-bit-toggle__slider-11" class="input-bit-toggle__slider"></span>
+                </label>
+                <label id="input__input-bit-toggle-12" class="input__input-bit-toggle">
+                    <input id="input-bit-toggle__toggle-12" class="input-bit-toggle__value" type="checkbox">
+                    <span id="input-bit-toggle__slider-12" class="input-bit-toggle__slider"></span>
+                </label>
+            </div>
+            <br>
+            <div id="display__channel-display">
+                <p class="input-prompt__text">Flip bits in the encoded message to simulate errors.</p>
+                <label id="channel-display__value-1" class="channel-display__value">0</label>
+                <label id="channel-display__value-2" class="channel-display__value">0</label>
+                <label id="channel-display__value-3" class="channel-display__value">0</label>
+                <label id="channel-display__value-4" class="channel-display__value">0</label>
+                <label id="channel-display__value-5" class="channel-display__value">0</label>
+                <label id="channel-display__value-6" class="channel-display__value">0</label>
+                <label id="channel-display__value-7" class="channel-display__value">0</label>
+                <label id="channel-display__value-8" class="channel-display__value">0</label>
+                <label id="channel-display__value-9" class="channel-display__value">0</label>
+                <label id="channel-display__value-10" class="channel-display__value">0</label>
+                <label id="channel-display__value-11" class="channel-display__value">0</label>
+                <label id="channel-display__value-12" class="channel-display__value">0</label>
+                <label id="channel-display__value-13" class="channel-display__value">0</label>
+                <label id="channel-display__value-14" class="channel-display__value">0</label>
+                <label id="channel-display__value-15" class="channel-display__value">0</label>
+                <label id="channel-display__value-16" class="channel-display__value">0</label>
+                <label id="channel-display__value-17" class="channel-display__value">0</label>
+                <label id="channel-display__value-18" class="channel-display__value">0</label>
+                <label id="channel-display__value-19" class="channel-display__value">0</label>
+                <label id="channel-display__value-20" class="channel-display__value">0</label>
+                <label id="channel-display__value-21" class="channel-display__value">0</label>
+                <label id="channel-display__value-22" class="channel-display__value">0</label>
+                <label id="channel-display__value-23" class="channel-display__value">0</label>
+                <label id="channel-display__value-24" class="channel-display__value">0</label>
+            </div>
+            <div id="display__channel">
+                <label id="channel__channel-bit-toggle-1" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-1" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-1" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-2" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-2" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-2" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-3" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-3" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-3" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-4" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-4" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-4" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-5" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-5" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-5" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-6" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-6" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-6" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-7" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-7" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-7" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-8" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-8" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-8" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-9" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-9" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-9" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-10" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-10" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-10" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-11" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-11" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-11" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-12" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-12" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-12" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-13" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-13" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-13" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-14" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-14" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-14" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-15" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-15" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-15" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-16" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-16" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-16" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-17" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-17" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-17" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-18" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-18" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-18" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-19" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-19" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-19" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-20" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-20" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-20" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-21" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-21" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-21" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-22" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-22" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-22" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-23" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-23" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-23" class="channel-bit-toggle__slider"></span>
+                </label>
+                <label id="channel__channel-bit-toggle-24" class="channel__channel-bit-toggle">
+                    <input id="channel-bit-toggle__toggle-24" class="channel-bit-toggle__value" type="checkbox">
+                    <span id="channel-bit-toggle__slider-24" class="channel-bit-toggle__slider"></span>
+                </label>
+            </div>
+            <br>
+            <div id="display__decoded" class="display__decoded">
+                <p id="decoded__prompt-text" class="decoded__prompt-text">Your decoded information is...</p>
+                <h2 id="decoded__code-word" class="decoded__code-word"></h2>
+            </div>
+        </div>
+    </main>
+    <script src="js/extended-golay-code-simulator-script.js"></script>
+</body>
+</html>

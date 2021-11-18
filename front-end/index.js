@@ -7,10 +7,27 @@ app.use(express.static(__dirname + '/assets'));
 //Set the view engine to ejs
 app.set('view engine', 'ejs');
 
-//Index page
-app.get('/', function(req, res) {
+//Home page
+app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.listen(3000);
-console.log('Server is listening on port 3000');
+//Extended golay code simulator page
+app.get('/extended-golay-code-simulator', (req, res) => {
+    res.render('extended-golay-code-simulator');
+});
+
+//NASA voyager 1 simulator page
+app.get('/nasa-voyager-1-simulator', (req, res) => {
+    res.render('nasa-voyager-1-simulator');
+});
+
+//TODO: Serve the report
+
+//About page
+app.get('/about', (req, res) => {
+    res.render('about');
+});
+
+app.listen(8080);
+console.log('Server is listening on http://localhost:8080');

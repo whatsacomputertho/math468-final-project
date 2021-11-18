@@ -7,3 +7,6 @@
 /back-end/scripts
 /back-end/include
 /back-end/pyvenv.cfg
+
+#Ignore python stuff
+/back-end/__pycache__
