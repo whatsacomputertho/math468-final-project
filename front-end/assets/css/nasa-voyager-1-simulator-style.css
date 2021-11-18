@@ -11,3 +11,49 @@ body
     color: rgba(255, 255, 255, 0.9);
 }
 
+.main__content
+{
+    width: auto;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+.drawing__canvas
+{
+    box-shadow: -3px 2px 9px 6px black;
+}
+
+.drawing__text, .content__text
+{
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.drawing__slider
+{
+    width: 640px;
+}
+
+.controls__button
+{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 32px;
+    color: white;
+    background-color:rgba(0, 0, 0, 0.0);
+    border-radius: 6px;
+    border-color: white;
+    transition-duration: 100ms;
+}
+
+#controls__undo-button:hover
+{
+    border-color: rgb(35, 146, 214);
+    background-color: rgba(35, 146, 214, 0.2);
+}
+
+#controls__clear-button:hover
+{
+    border-color: rgb(200, 0, 0);
+    background-color: rgba(200, 0, 0, 0.3);
+    cursor: pointer;
+}

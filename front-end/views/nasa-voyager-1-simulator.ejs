@@ -32,6 +32,42 @@
     </nav>
     <main id="main" class="main">
         <h1 id="main__header" class="main__header">NASA Voyager 1 Simulator</h1>
+        <div id="main__content" class="main__content">
+            <p id="content__drawing-prompt" class="content__text">Draw an image to be encoded according to the binary extended Golay code.</p>
+            <div id="content__drawing" class="content__drawing">
+                <canvas id="drawing__canvas" class="drawing__canvas" width="320" height="240"></canvas>
+                <div id="drawing__controls" class="drawing__controls">
+                    <button id="controls__undo-button" class="controls__button">Undo</button>
+                    <button id="controls__clear-button" class="controls__button">Clear</button>
+                    <input id="controls__stroke-slider" class="controls__slider" type="range" min="1" max="50">
+                    <input id="controls__color-picker" class="controls__color" type="color">
+                </div>
+            </div>
+            <br>
+            <p id="content__drawing-prompt" class="content__text">Below is the encoded image.</p>
+            <div id="content__encoded-drawing" class="content__encoded-drawing">
+                <canvas id="encoded-drawing__canvas" class="drawing__canvas" width="640" height="240"></canvas>
+            </div>
+            <br>
+            <div id="content__noisy-encoded-drawing" class="content__noisy-encoded-drawing">
+                <p id="content__drawing-prompt" class="content__text">Below is the encoded image with noise from the channel added.  Adjust the error probability of the channel using the slider!</p>
+                <div id="noisy-encoded-drawing__display" class="drawing__display">
+                    <canvas id="noisy-encoded-drawing__canvas" class="drawing__canvas" width="640" height="240"></canvas>
+                </div>
+                <div id="noisy-encoded-drawing__controls" class="drawing__controls">
+                    <label id="noisy-encoded-drawing__input-prompt" class="drawing__text" for="noisy-encoded-drawing__slider">Channel Error Probability</label>
+                    <br>
+                    <input id="noisy-encoded-drawing__slider" class="drawing__slider" type="range" min="0" max="1" step="0.01">
+                </div>
+            </div>
+            <br>
+            <div id="content__decoded-drawing" class="content__decoded-drawing">
+                <p id="content__drawing-prompt" class="content__text">Below is the decoded image.</p>
+                <canvas id="decoded-drawing__canvas" class="drawing__canvas" width="320" height="240"></canvas>
+            </div>
+            <br>
+        </div>
     </main>
+    <script src="js/nasa-voyager-1-simulator-script.js" defer></script>
 </body>
 </html>
