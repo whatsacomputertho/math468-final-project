@@ -6,277 +6,174 @@ import numpy
 #Print the fact that the script is being run
 print("Server initializing...", flush=True)
 
-#Generator matrix for the [23, 12, 7] binary Golay code
-#Formed by removing one coordinate from the generator matrix of the extended binary Golay code
-BINARY_GOLAY_GENERATOR_MATRIX = [
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0],
-    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1],
-    [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0],
-    [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1],
-    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1],
-    [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1],
-    [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
-]
-
-#Generator matrix for the [24, 12, 8] extended binary Golay code
-EXTENDED_BINARY_GOLAY_GENERATOR_MATRIX = [
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1],
-    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0],
-    [0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1],
-    [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0],
-    [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1],
-    [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0, 1],
-    [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 1],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1],
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1]
-]
-
-#TODO: Fill out the generator matrix
-TERNARY_GOLAY_GENERATOR_MATRIX = []
-
-#TODO: Fill out the generator matrix
-EXTENDED_TERNARY_GOLAY_GENERATOR_MATRIX = []
-
-#This function generates a list of all code words by linearly combining all elements of the
-#generator matrix
-def generate_all_code_words(generator_matrix, base):
-    #We know that the elements of the generator matrix are code words
-    code_words = generator_matrix.copy()
-    
-    #We continue until all code words are added
-    while True:
-        #Flag value for whether or not a code word was added on this iteration
-        code_word_added = False
-
-        #Loop through each element of the generator matrix
-        for i in range(len(generator_matrix)):
-            #Then loop through each element already added to the code
-            for j in range(len(code_words)):
-                #Allocate memory for a new code word
-                code_word = []
-
-                #Add the element of the generator matrix to a code word that has already been
-                #added to the code
-                for k in range(len(generator_matrix[i])):
-                    code_word.append((generator_matrix[i][k] + code_words[j][k]) % base)
-                
-                #If the sum of the two code words has not already been added, add it.  Since a
-                #new code word was added, we expect there may be more code words to account for
-                #so we keep iterating
-                if code_word not in code_words:
-                    code_words.append(code_word)
-                    code_word_added = True
-        
-        #If by the time we have looped through the entire generator matrix we find that we have
-        #not added a new code word, we know for sure that we have found all linear combinations
-        #of the rows of the generator matrix (i.e. the entire code).
-        if not(code_word_added):
-            break
-
-    #After we generate the entire code, return it as a list
-    return code_words
-
-#If two vectors are different lengths, this returns the two vectors with the same length, but with
-#the shorter vector having zeros appended to the front of it (i.e. its algebraic properties are the
-#same).
-def fix_vector_lengths(vec1, vec2):
-    #Instantiate the return "list of lists"
-    vecs = []
-
-    #Check if the vectors lengths are different
-    vec1_longer = False
-    len_diff = 0
-    if len(vec1) > len(vec2):
-        vec1_longer = True
-        len_diff = len(vec1) - len(vec2)
-    if len(vec2) > len(vec1):
-        len_diff = len(vec2) - len(vec1)
-    
-    #If they are, then append zeroes to the beginning of the shorter vector
-    if len_diff != 0 and vec1_longer:
-        for i in range(len_diff):
-            vec2.insert(0, 0)
-    elif len_diff != 0 and not(vec1_longer):
-        for i in range(len_diff):
-            vec2.insert(0, 0)
-    
-    #Return the list containing the fixed vec 1 and vec 2
-    vecs.append(vec1)
-    vecs.append(vec2)
-    return vecs
-
-#This function adds two vectors together according to addition in the finite field of the given base
-def vector_addition(vec1, vec2, base):
-    #Instantiate the sum vector
-    vec = []
-
-    #Fix the vector lengths (if different lengths)
-    vecs = fix_vector_lengths(vec1, vec2)
-    
-    #Add as usual
-    for i in range(len(vecs[0])):
-        vec.append((vecs[0][i] + vecs[1][i]) % base)
-
-    #Return the sum
-    return vec
-
-#This function calculates the Hamming distance between two vectors
-def hamming_distance(vec1, vec2):
-    #Instantiate the distance
-    dist = 0
-
-    #Fix the vector lengths (if different lengths)
-    vecs = fix_vector_lengths(vec1, vec2)
-
-    #Calculate hamming distance as usual
-    for i in range(len(vecs[0])):
-        if vecs[0][i] != vecs[1][i]:
-            dist = dist + 1
-
-    #Return the Hamming distance
-    return dist
-
-#Finds the nearest code word in a code given some vector 
-def find_nearest_code_word(vec, code):
-    #Instantiate the distance to infinity since we want to minimize it
-    dist = numpy.inf
-
-    #Also we are looking for a code word so we track the index
-    index = 0
-
-    #Loop through all code words (This is a brute force search)
-    for i in range(len(code)):
-        #Calculate the hamming distance
-        vec_dist = hamming_distance(vec, code[i])
-
-        #Check if the distance is smaller at the ith iteration
-        if vec_dist < dist:
-            dist = vec_dist
-            index = i
-
-    #Return the code word at the index of the minimum distance code
-    #word relative to the one passed in
-    return code[index]
-
-
-#This function extracts the first n bits from a code word (presumably the information bits)
-def get_information_bits(vec, n):
-    #Instantiate the information bit list
-    information_bits = []
-
-    #Loop through the first n bits
-    for i in range(n):
-        #Append the first n bits (they are info bits)
-        information_bits.append(vec[i])
-
-    #Return the list of information bits
-    return information_bits
-
-#Generate all code words for all codes and save to memory
-print("Generating the binary Golay code...", flush=True)
-BINARY_GOLAY_CODE = generate_all_code_words(BINARY_GOLAY_GENERATOR_MATRIX, 2)
-print("Generating the extended binary Golay code...", flush=True)
-EXTENDED_BINARY_GOLAY_CODE = generate_all_code_words(EXTENDED_BINARY_GOLAY_GENERATOR_MATRIX, 2)
-
-#TODO: Generate all code words for the ternary Golay codes
-
-#TODO: Look into Golay polynomial and BCH decoding
-
 #Initialize the Flask application
 server = Flask(__name__)
 
 #Apply CORS middleware to server
 CORS(server)
 
+#TODO: Binary golay code generator matrix
+BINARY_EXTENDED_GOLAY_MATRIX = [numpy.uint32(8391153), numpy.uint32(4195578), numpy.uint32(2097789), numpy.uint32(1050942), numpy.uint32(527517), numpy.uint32(265806),
+                                numpy.uint32(134949),  numpy.uint32(69522), numpy.uint32(34761), numpy.uint32(17382), numpy.uint32(9559), numpy.uint32(6827)]
+
+#Returns the unpacked bits of the pixel's rgb values
+def get_pixel_bits(image_data, i):
+    r = numpy.uint8(image_data[4*i])
+    g = numpy.uint8(image_data[(4*i) + 1])
+    b = numpy.uint8(image_data[(4*i) + 2])
+    return [r, g, b]
+
+#Flips the pixel bits according to the given error probability
+def transmit_pixel(pixel_data, error_rate):
+    pixel_data_clone = [numpy.unpackbits(pixel_data[0]), numpy.unpackbits(pixel_data[1]), numpy.unpackbits(pixel_data[2])]
+    for i in range(len(pixel_data_clone)):
+        for j in range(len(pixel_data_clone[i])):
+            rng = numpy.random.binomial(1, error_rate, 1)
+            if(rng == 1):
+                if(pixel_data_clone[i][j] == 0):
+                    pixel_data_clone[i][j] = 1
+                else:
+                    pixel_data_clone[i][j] = 0
+    r = numpy.packbits(pixel_data_clone[0])[0]
+    g = numpy.packbits(pixel_data_clone[1])[0]
+    b = numpy.packbits(pixel_data_clone[2])[0]
+    return [r, g, b]
+
+#Encodes a pixel according to the binary extended golay matrix
+def encode_pixel(pixel_data):
+    pixel_data_clone = [numpy.unpackbits(pixel_data[0]), numpy.unpackbits(pixel_data[1]), numpy.unpackbits(pixel_data[2])]
+    codeword_1 = numpy.uint32(0)
+    codeword_2 = numpy.uint32(0)
+    for i in range(len(pixel_data_clone)):
+        for j in range(len(pixel_data_clone[i])):
+            if(pixel_data_clone[i][j] == numpy.uint8(1)):
+                if(i == 1):
+                    codeword_1 = numpy.bitwise_xor(BINARY_EXTENDED_GOLAY_MATRIX[j], codeword_1)
+                elif(i == 2 and j < 4):
+                    codeword_1 = numpy.bitwise_xor(BINARY_EXTENDED_GOLAY_MATRIX[8 + j], codeword_1)
+                elif(i == 2 and j >= 4):
+                    codeword_2 = numpy.bitwise_xor(BINARY_EXTENDED_GOLAY_MATRIX[j - 4], codeword_2)
+                elif(i == 3):
+                    codeword_2 = numpy.bitwise_xor(BINARY_EXTENDED_GOLAY_MATRIX[j + 4], codeword_2)
+    return [codeword_1, codeword_2]
+
+#Converts the encoded pixels two rgb pixels for visualization
+def get_encoded_pixels(code_words):
+    r1_bits = numpy.right_shift(numpy.bitwise_and(code_words[0], numpy.uint32(16711680)), 16)
+    g1_bits = numpy.right_shift(numpy.bitwise_and(code_words[0], numpy.uint32(65280)), 8)
+    b1_bits = numpy.bitwise_and(code_words[0], 255)
+    r2_bits = numpy.right_shift(numpy.bitwise_and(code_words[1], numpy.uint32(16711680)), 16)
+    g2_bits = numpy.right_shift(numpy.bitwise_and(code_words[1], numpy.uint32(65280)), 8)
+    b2_bits = numpy.bitwise_and(code_words[1], 255)
+    r1 = numpy.uint8(r1_bits)
+    g1 = numpy.uint8(g1_bits)
+    b1 = numpy.uint8(b1_bits)
+    r2 = numpy.uint8(r2_bits)
+    g2 = numpy.uint8(g2_bits)
+    b2 = numpy.uint8(b2_bits)
+    return [[r1, g1, b1], [r2, g2, b2]]
+
+#Converts the parity check bits of the encoded pixel into a pixel itself for visualization
+def get_parity_check_pixel(code_words):
+    parity_bits_1 = numpy.bitwise_and(numpy.uint32(4095), code_words[0])
+    parity_bits_2 = numpy.bitwise_and(numpy.uint32(4095), code_words[1])
+    r_bits = numpy.right_shift(numpy.bitwise_and(parity_bits_1, numpy.uint32(4080)), 4)
+    g_bits_2 = numpy.bitwise_and(parity_bits_1, numpy.uint32(15))
+    g_bits_1 = numpy.right_shift(numpy.bitwise_and(parity_bits_2, numpy.uint32(3840)), 4)
+    b_bits = numpy.bitwise_and(parity_bits_2, numpy.uint32(255))
+    r = numpy.uint8(r_bits)
+    g = numpy.uint8(numpy.bitwise_xor(g_bits_1, g_bits_2))
+    b = numpy.uint8(b_bits)
+    return [r, g, b]
+
+#Encodes all image data
+def encode_image(image_data, width, height, is_parity_check_image):
+    encoded_image_data = []
+    if(is_parity_check_image):
+        for i in range(height):
+            for j in range(width):
+                pixel_bits = get_pixel_bits(image_data, j+(i*width))
+                encoded_image_data.append(int(pixel_bits[0]))
+                encoded_image_data.append(int(pixel_bits[1]))
+                encoded_image_data.append(int(pixel_bits[2]))
+                encoded_image_data.append(255)
+            for j in range(width):
+                parity_pixel_bits = get_parity_check_pixel(encode_pixel(get_pixel_bits(image_data, j+(i*width))))
+                encoded_image_data.append(int(parity_pixel_bits[0]))
+                encoded_image_data.append(int(parity_pixel_bits[1]))
+                encoded_image_data.append(int(parity_pixel_bits[2]))
+                encoded_image_data.append(255)
+    else:
+        for i in range(int(len(image_data)/4)):
+            pixels = get_encoded_pixels(encode_pixel(get_pixel_bits(image_data, i)))
+            encoded_image_data.append(int(pixels[0][0]))
+            encoded_image_data.append(int(pixels[0][1]))
+            encoded_image_data.append(int(pixels[0][2]))            
+            encoded_image_data.append(255)
+            encoded_image_data.append(int(pixels[1][0]))
+            encoded_image_data.append(int(pixels[1][1]))
+            encoded_image_data.append(int(pixels[1][2]))
+            encoded_image_data.append(255)
+    return encoded_image_data
+
+#Transmits image data according to a given stochastic error probability
+def transmit_image(image_data, error_rate):
+    noisy_image_data = []
+    for i in range(int(len(image_data)/4)):
+        pixel = transmit_pixel(get_pixel_bits(image_data, i), error_rate)
+        noisy_image_data.append(int(pixel[0]))
+        noisy_image_data.append(int(pixel[1]))
+        noisy_image_data.append(int(pixel[2]))
+        noisy_image_data.append(255)
+    return noisy_image_data
+
 #This function encodes a list of code words according to the binary golay code generator matrix
 @cross_origin()
 @server.route("/binary/encode", methods=['POST'])
 def binary_golay_encode():
-    try:
-        information_bits = request.get_json(force=True).informationBits
-        code_words = []
-        for vector in information_bits:
-            code_word = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            for i in range(len(vector)):
-                if vector[i] == 1:
-                    code_word = vector_addition(BINARY_GOLAY_GENERATOR_MATRIX[i], code_word, 2)
-            code_words.append(code_word)
-        return { "codeWords" : code_words }
-    except Exception as e:
-        return { "message" : str(e) }
+    return { "message" : "Hello, World!" }
 
 #This function decodes a list of vectors according to the binary golay code
 @cross_origin()
 @server.route("/binary/decode")
 def binary_golay_decode():
-    try:
-        code_words = request.get_json(force=True).codeWords
-        information_bits = []
-        for word in code_words:
-            information_bits.append(get_information_bits(find_nearest_code_word(word, BINARY_GOLAY_CODE), 12))
-        return { "informationBits" : information_bits }
-    except Exception as e:
-        return { "message" : str(e) }
+    return { "message" : "Hello, World!" }
 
 #This function encodes a list of code words according to the extended binary golay code generator matrix
 @cross_origin()
 @server.route("/extended-binary/encode", methods=['POST'])
 def extended_binary_golay_encode():
-    try:
-        information_bits = request.get_json(force=True).get('informationBits')
-        code_words = []
-        for vector in information_bits:
-            code_word = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-            for i in range(len(vector)):
-                if vector[i] == 1:
-                    code_word = vector_addition(EXTENDED_BINARY_GOLAY_GENERATOR_MATRIX[i], code_word, 2)
-            code_words.append(code_word)
-        return { "codeWords" : code_words }
-    except Exception as e:
-        return { "message" : str(e) }
+    return { "message" : "Hello, World!" }
+
+#This function encodes a list of code words according to the extended binary golay code generator matrix
+@cross_origin()
+@server.route("/extended-binary/encode-image", methods=['POST'])
+def extended_binary_golay_encode_image():
+    data = request.get_json()
+    image_data = list(data.get("informationBits").values())
+    width = data.get("width")
+    height = data.get("height")
+    encoded_image = encode_image(image_data, width, height, False)
+    return { "width" : width * 2, "height" : height, "data" : encoded_image }
 
 #This function decodes a list of vectors according to the extended binary golay code
 @cross_origin()
 @server.route("/extended-binary/decode", methods=['POST'])
 def extended_binary_golay_decode():
-    try:
-        code_words = request.get_json(force=True).get('codeWords')
-        information_bits = []
-        for word in code_words:
-            information_bits.append(get_information_bits(find_nearest_code_word(word, EXTENDED_BINARY_GOLAY_CODE), 12))
-        return { "informationBits" : information_bits }
-    except Exception as e:
-        return { "message" : str(e) }
+    return { "message" : "Hello, World!" }
 
 #This function transmits a binary code word according to some stochastic error probability
 @cross_origin()
-@server.route("/binary-channel/transmit", methods=['POST'])
+@server.route("/binary-channel/transmit-image", methods=['POST'])
 def binary_channel_transmit():
-    try:
-        body = request.get_json(force=True)
-        code_words = body.codeWords
-        error_rate = body.errorRate
-        noisy_code_words = []
-        for word in code_words:
-            noisy_word = []
-            for bit in word:
-                rng = numpy.random.binomial(1, error_rate, 1)
-                if rng == 1:
-                    noisy_word.append((bit + 1) % 2)
-                else:
-                    noisy_word.append(bit)
-            noisy_code_words.append(noisy_word)
-        return { "noisyCodeWords" : noisy_code_words }
-    except Exception as e:
-        return { "message" : str(e) }
+    data = request.get_json()
+    image_data = list(data.get("encodedImage").values())
+    width = data.get("width")
+    height = data.get("height")
+    error_rate = float(data.get("errorRate"))
+    noisy_image = transmit_image(image_data, error_rate)
+    print("running")
+    return { "width" : width, "height" : height, "data" : noisy_image }
 
 #TODO: Write the ternary golay encoding function
 @server.route("/ternary/encode")
