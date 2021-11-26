@@ -22,7 +22,10 @@ app.get('/nasa-voyager-1-simulator', (req, res) => {
     res.render('nasa-voyager-1-simulator');
 });
 
-//TODO: Serve the report
+//TODO: Serve the report PDF
+app.get('/report', (req, res) => {
+    res.render('report');
+});
 
 //About page
 app.get('/about', (req, res) => {

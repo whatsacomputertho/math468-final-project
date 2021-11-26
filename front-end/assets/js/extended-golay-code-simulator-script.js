@@ -206,18 +206,18 @@ function setChannelBitValues(informationBits)
         data = JSON.parse(this.response);
 
         //Display the response
-        displayChannelBitValues(data.codeWords[0]);
+        displayChannelBitValues(data.codeWord);
 
         //Decode the channel bits
         decodeChannelBits(getChannelBits());
     };
 
     //Send the request
-    req.send(JSON.stringify({ "informationBits" : [informationBits] }));
+    req.send(JSON.stringify({ "informationBits" : informationBits }));
 }
 
-//This function sends a request to the back-end to decode the code word with added noise
-function decodeChannelBits(codeWord)
+//This function sends a request to the back-end to decode the message with added noise
+function decodeChannelBits(message)
 {
     var req = new XMLHttpRequest();
     req.open("POST", `http://${HOST}:${PORT}/extended-binary/decode`);
@@ -230,11 +230,11 @@ function decodeChannelBits(codeWord)
         data = JSON.parse(this.response);
 
         //Display the response
-        displayDecodedInformationBits(data.informationBits[0]);
+        displayDecodedInformationBits(data.informationBits);
     };
 
     //Send the request
-    req.send(JSON.stringify({ "codeWords" : [codeWord] }));
+    req.send(JSON.stringify({ "message" : message }));
 }
 
 //Initialize the webpage to start
