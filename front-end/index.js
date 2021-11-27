@@ -1,4 +1,5 @@
 const express = require('express');
+const dotenv = require('dotenv').config();
 var app = express();
 
 //Enable js and css to be served with rendered ejs
@@ -14,12 +15,18 @@ app.get('/', (req, res) => {
 
 //Extended golay code simulator page
 app.get('/extended-golay-code-simulator', (req, res) => {
-    res.render('extended-golay-code-simulator');
+    res.render('extended-golay-code-simulator', {
+        host: process.env.HOST,
+        port: process.env.PORT
+    });
 });
 
 //NASA voyager 1 simulator page
 app.get('/nasa-voyager-1-simulator', (req, res) => {
-    res.render('nasa-voyager-1-simulator');
+    res.render('nasa-voyager-1-simulator', {
+        host: process.env.HOST,
+        port: process.env.PORT
+    });
 });
 
 //TODO: Serve the report PDF
