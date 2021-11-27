@@ -10,3 +10,7 @@
 
 #Ignore python stuff
 /back-end/__pycache__
+
+#Ignore environment files
+/front-end/.env
+/back-end/.env

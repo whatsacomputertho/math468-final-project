@@ -1,6 +1,5 @@
-//TODO: Refactor
-const HOST = '127.0.0.1';
-const PORT = 3000;
+const HOST = document.querySelector('#page-data').dataset.host;
+const PORT = document.querySelector('#page-data').dataset.port;
 
 var isDrawing = false;
 var requestSent = false;

@@ -1,0 +1,14 @@
+version: '2'
+services:
+  back_end:
+    build:
+      context: ./back-end
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+     - "3000:3000"
+
+  front_end:
+    build: ./front-end
+    ports:
+      - "8080:8080"
