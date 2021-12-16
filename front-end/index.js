@@ -29,9 +29,9 @@ app.get('/nasa-voyager-1-simulator', (req, res) => {
     });
 });
 
-//TODO: Serve the report PDF
+//Serve the report PDF
 app.get('/report', (req, res) => {
-    res.render('report');
+    res.download('./assets/pdf/math468-final-project-report.pdf');
 });
 
 //About page
