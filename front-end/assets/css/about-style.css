@@ -5,13 +5,19 @@ body
     background: rgba(0, 0, 0, 0.9);
 }
 
+.main__content
+{
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
 .main__header
 {
     font-family: Arial, Helvetica, sans-serif;
     color: rgba(255, 255, 255, 0.9);
 }
 
-.main__text
+.main__text, .bio__text
 {
     font-family: Arial, Helvetica, sans-serif;
     color: rgba(255, 255, 255, 0.9);
